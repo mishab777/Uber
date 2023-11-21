@@ -1,7 +1,16 @@
 import { StyleSheet, Text, View,Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 const Travel = () => {
+    const navigation = useNavigation();
+    const handleback = ()=>{
+        navigation.navigate("Home");
+    }
+    const handlemail = ()=>{
+        navigation.navigate("email");
+    }
+
   return (
     <View style={{backgroundColor:"white"}}>
         <View style={{
@@ -11,7 +20,9 @@ const Travel = () => {
             alignItems:'center',
             justifyContent:"space-evenly"
         }}>
+            <TouchableOpacity onPress={handleback}>
             <Image style={{width:22,height:22}} source={require("./assets/arrow.png")}/>
+            </TouchableOpacity>
             <Text style={{fontSize:18,color:"black"}}>Uber Travel</Text>
 
         </View>
@@ -68,8 +79,8 @@ const Travel = () => {
             </View>
 
         </View>
-        <TouchableOpacity style={{marginLeft:17,backgroundColor:"black",width:330,height:45,borderRadius:5,alignItems:"center",justifyContent:"center"}}>
-            <Text style={{color:"white",fontSize:15}}>Link email</Text>
+        <TouchableOpacity style={{marginLeft:17,backgroundColor:"black",width:330,height:45,borderRadius:5,alignItems:"center",justifyContent:"center"}} onPress={handlemail}>
+            <Text style={{color:"white",fontSize:16,fontWeight:500}}>Link email</Text>
 
         </TouchableOpacity>
         <TouchableWithoutFeedback>

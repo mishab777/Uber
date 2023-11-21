@@ -1,8 +1,14 @@
-import { StyleSheet, Text, View,Image } from 'react-native'
+import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 
 const Account = () => {
+  const navigation = useNavigation();
+
+  const handleuber = ()=>{
+    navigation.navigate("uberac")
+  }
   return (
     <View style={{backgroundColor:"white"}}>
       <View style={{width:"100%",flexDirection:"row",alignItems:"center",justifyContent:'space-evenly',height:100}}>
@@ -69,11 +75,13 @@ const Account = () => {
         <Text style={{color:"black",fontSize:15,fontWeight:600}}>Business Hub</Text>
 
       </View>
+      <TouchableOpacity onPress={handleuber}>
       <View style={{width:240,flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",height:50}}>
         <Image style={{width:15,height:15}} source={require("./assets/user.png")}/>
         <Text style={{color:"black",fontSize:15,fontWeight:600}}>Manage Uber account</Text>
 
       </View>
+      </TouchableOpacity>
       <View style={{width:130,flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",height:50}}>
         <Image style={{width:15,height:15}} source={require("./assets/ex.png")}/>
         <Text style={{color:"black",fontSize:15,fontWeight:600}}>Legal</Text>

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TouchableWithoutFeedback,Image } from 'react-native'
+import { StyleSheet, Text, View,TouchableWithoutFeedback,Image ,TouchableOpacity} from 'react-native'
 import React from 'react'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import { useNavigation } from '@react-navigation/native'
@@ -40,7 +40,7 @@ const Maplocation = () => {
              debounce={400}
              fetchDetails={true}
             />
-            <View style={{height:640}}>
+            <View style={{height:640,position:"relative"}}>
              <MapView
              style={{height:"100%",marginTop:20}}
              mapType='standard'
@@ -52,6 +52,9 @@ const Maplocation = () => {
         }}
       />
       </View>
+      <TouchableOpacity style={{alignItems:"center",justifyContent:"center",width:320,height:50,backgroundColor:"black",position:"absolute",bottom:25,marginLeft:20,borderRadius:10}}>
+        <Text style={{color:"white",fontSize:18,fontWeight:500}}>Done</Text>
+      </TouchableOpacity>
     </View>
   )
 }

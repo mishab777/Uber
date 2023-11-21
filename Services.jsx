@@ -3,7 +3,7 @@ import React from 'react'
 
 const Services = () => {
   return (
-    <View style={{backgroundColor:"white"}}>
+    <View style={{backgroundColor:"white",height:"100%"}}>
     <View style={{width:160,height:80,alignItems:"center",justifyContent:"center"}}>
       <Text style={{color:"black",fontSize:35,fontWeight:"600"}}>Services</Text>
 

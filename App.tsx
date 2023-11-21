@@ -17,6 +17,15 @@ import Intercity from './Intercity';
 import Ride from './Ride';
 import Maplocation from './Maplocation';
 import Travel from './Travel';
+import Now from './Now';
+import LandingPage from './Landing1';
+import RideOptionsCard from './RideOptionsCard';
+import Intercity2 from './Intercity2';
+import Uberac from './Uberac';
+import Name from './Name';
+import Phone from './Phone';
+import Email from './Email';
+import Password from './Password';
 
 export const App = () => {
   const Stack = createStackNavigator();
@@ -26,13 +35,22 @@ export const App = () => {
       <NavigationContainer>
         <StatusBar barStyle="light-content" backgroundColor="#8ADCFC"/>
       <SafeAreaProvider>
-      <Stack.Navigator>
-      <Stack.Screen name="Landing" component={Landing} options={{headerShown:false}}/>
-      <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
-      <Stack.Screen name="Intercity" component={Intercity} options={{headerShown:false}}/>
-      <Stack.Screen name="Ride" component={Ride} options={{headerShown:false}}/>
-      <Stack.Screen name="Maplocation" component={Maplocation} options={{headerShown:false}}/>
-      <Stack.Screen name="Travel" component={Travel} options={{headerShown:false}}/>
+      <Stack.Navigator screenOptions={{headerShown:false}}>
+      {/* <Stack.Screen name="Landingpage" component={LandingPage} options={{headerShown:false}}/> */}
+      <Stack.Screen name="Landing" component={Landing} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Intercity" component={Intercity} />
+      <Stack.Screen name="Ride" component={Ride} />
+      <Stack.Screen name="Maplocation" component={Maplocation} />
+      <Stack.Screen name="Travel" component={Travel} />
+      <Stack.Screen name="Now" component={Now} />
+      <Stack.Screen name="Intercity2" component={Intercity2} />
+      <Stack.Screen name="uberac" component={Uberac} />
+      <Stack.Screen name="name" component={Name} />
+      <Stack.Screen name="phone" component={Phone} />
+      <Stack.Screen name="Password" component={Password} />
+      <Stack.Screen name="email" component={Email} />
+      <Stack.Screen name="RideOptionsCard" component={RideOptionsCard} />
       {/* <Stack.Screen name="EatScreen" component={EatScreen} options={{headerShown:false}}/> */}
     </Stack.Navigator>
       </SafeAreaProvider>

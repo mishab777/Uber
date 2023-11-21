@@ -11,7 +11,7 @@ const Landing = () => {
   return (
     <View style={styles.main}>
                 <StatusBar barStyle="light-content" backgroundColor="#306CEE"/>
-        <Text style={{color:"white",fontSize:40}}>uber</Text>
+        <Text style={{color:"white",fontSize:40,fontWeight:"500",letterSpacing:1}}>uber</Text>
         <Image style={{width:180,height:180}} source={require("./assets/safety.png")}/>
         <Text style={{color:"white",fontWeight:"bold",fontSize:35}}>Move with Safety</Text>
         <TouchableOpacity onPress={handle}>

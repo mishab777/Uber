@@ -1,33 +1,39 @@
-import { StyleSheet, Text, View,SafeAreaView,TouchableOpacity,TouchableWithoutFeedback,Image } from 'react-native'
+import { StyleSheet, Text, View,TouchableWithoutFeedback,Image } from 'react-native'
 import React from 'react'
-import tw from 'tailwind-react-native-classnames'
-import { useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
-import { selectDestination, setDestination,setOrigin } from './slices/navSlice'
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { setDestination,setOrigin } from './slices/navSlice'
+import { useDispatch } from 'react-redux';
+import MapView,{Marker} from 'react-native-maps'
+import tw from 'tailwind-react-native-classnames'
+import { useSelector } from 'react-redux'
 import { selectOrigin } from './slices/navSlice'
 
 
-const NavigateCard = () => {
-  const dispatch = useDispatch();
+const Intercity2 = () => {
 
+    const origin = useSelector(selectOrigin);
+
+
+  const dispatch = useDispatch();
     const navigation = useNavigation();
 
     const handleback = ()=>{
-        navigation.navigate("Home")
+        navigation.navigate("Intercity");
     }
-    const handlemap = ()=>{
-        navigation.navigate("Maplocation")
+    const handleback2 = ()=>{
+        navigation.navigate("Maplocation");
     }
   return (
-    <SafeAreaView style={tw `bg-white flex-1`}>
+    <View style={{backgroundColor:"white",height:"100%"}}>
         <TouchableWithoutFeedback onPress={handleback}>
-        <View style={{width:60,height:50,alignItems:"center",justifyContent:"center"}}>
+        <View style={{marginLeft:10,width:200,height:50,alignItems:"center",justifyContent:"space-between",flexDirection:"row"}}>
             <Image style={{width:20,height:20}} source={require("./assets/arrow.png")}/>
+            <Text style={{color:"black",fontSize:18}}>Plan your ride</Text>
 
         </View>
         </TouchableWithoutFeedback>
-            <GooglePlacesAutocomplete
+        <GooglePlacesAutocomplete
              onPress={(data, details = null)=>{
               dispatch(
                 setOrigin({
@@ -78,17 +84,49 @@ const NavigateCard = () => {
         </View>
 
       </View>
-      <TouchableWithoutFeedback onPress={handlemap}>
+      <TouchableWithoutFeedback onPress={handleback2}>
       <View style={{width:240,flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",height:60}}>
         <Image style={{width:15,height:15}} source={require("./assets/map.png")}/>
         <Text style={{color:"black",fontSize:15,fontWeight:600}}>Set location on map</Text>
 
       </View>
       </TouchableWithoutFeedback>
-    </SafeAreaView>
+      <View style={{width:"100%",height:445}}>
+      <MapView
+  style={tw`flex-1`}
+  mapType='standard'
+  initialRegion={
+    origin?.location
+      ? {
+          latitude: origin.location.lat,
+          longitude: origin.location.lng,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
+        }
+      : {
+          latitude: 0,
+          longitude: 0, 
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
+        }
+  }
+>
+  {origin?.location && (
+    <Marker
+      coordinate={{
+        latitude: origin.location.lat,
+        longitude: origin.location.lng,
+      }}
+    />
+  )}
+</MapView>
+
+
+      </View>
+    </View>
   )
 }
 
-export default NavigateCard
+export default Intercity2
 
 const styles = StyleSheet.create({})
